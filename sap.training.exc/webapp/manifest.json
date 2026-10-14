@@ -49,10 +49,17 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "sap.training.exc.i18n.i18n"
+          "bundleName": "sap.training.exc.i18n.i18n",
+          "supportedLocales": ["FR"],
+          "fallbackLocale": ""
         }
+      },
+      "": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/data.json"
       }
     },
+    "handleValidation": true,
     "resources": {
       "css": [
         {
@@ -62,21 +69,21 @@
     },
     "routing": {
       "config": {
-          "routerClass": "sap.m.routing.Router",
-          "viewType": "XML",
-          "async": true,
-          "viewPath": "sap.training.exc.view",
-          "controlAggregation": "pages",
-          "controlId": "<...>"
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "sap.training.exc.view",
+        "controlAggregation": "pages",
+        "controlId": "<...>"
       },
       "routes": [],
       "targets": {}
     },
     "rootView": {
-        "viewName": "sap.training.exc.view.App",
-        "type": "XML",
-        "async": true,
-        "id": "App"
+      "viewName": "sap.training.exc.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
     }
   }
 }
