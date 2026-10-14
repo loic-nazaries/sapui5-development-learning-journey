@@ -1,0 +1,63 @@
+<mvc:View
+    controllerName="supplierform.controller.Supplier"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+            <form:SimpleForm
+                layout="ColumnLayout"
+                editable="true"
+                columnsM="3"
+                columnsL="4"
+                columnsXL="6"
+            >
+                <form:content>
+                    <core:Title text="Address" />
+                        <Label text="Name" />
+                        <Input value="" />
+
+                        <Label text="Street/No." />
+                        <Input value="" />
+
+                        <Label text="Zip Code/City" />
+                        <Input value="" />
+
+                        <Label text="Country" />
+                        <Input value="" />
+
+                        <Label text="Web" />
+                        <Input value="" />
+
+                    <core:Title text="Contact" />
+                        <Label text="Twitter" />
+                        <Input value="" />
+
+                        <Label text="Email" />
+                        <Input value="" />
+
+                        <Label text="Tel" />
+                        <Input value="" />
+
+                    <core:Title text="Other" />
+                        <Label text="SMS" />
+                        <Input value="" />
+
+                        <Label text="Mobile" />
+                        <Input value="" />
+
+                        <Label text="Pager" />
+                        <Input value="" />
+
+                        <Label text="Fax" />
+                        <Input value="" />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>
