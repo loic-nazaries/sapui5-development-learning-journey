@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/core/syncStyleClass",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], (Controller, syncStyleClass, JSONModel, Filter, FilterOperator) => {
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageToast"
+], (Controller, syncStyleClass, JSONModel, Filter, FilterOperator, MessageToast) => {
     "use strict";
 
     return Controller.extend("sap.training.exc.controller.Overview", {
@@ -15,43 +16,48 @@ sap.ui.define([
         },
 
         onSave: function () {
-            if (!this.pDialog) {
-                this.pDialog = this.loadFragment({
-                    name: "sap.training.exc.view.Dialog"
-                }).then(function (oDialog) {
-                    syncStyleClass(
-                        this.getOwnerComponent().getContentDensityClass(),
-                        this.getView(),
-                        oDialog
-                    );
-                    return oDialog;
-                }.bind(this));
-            }
-            this.pDialog.then(function (oDialog) {
-                oDialog.open();
+            var oModelData = this.getView().getModel("customer").getData(); 
+            var oResourceBundle = this.getView().getModel("i18n").getResourceBundle(); 
+            
+            if (oModelData.Discount === undefined) { oModelData.Discount = 0; } 
+            
+            this.byId("customerTable").getBinding("items").create({ 
+                "Form": oModelData.Form, 
+                "CustomerName": oModelData.CustomerName, 
+                "Discount": oModelData.Discount + "", 
+                "Street": oModelData.Street, 
+                "PostCode": oModelData.PostCode, 
+                "City": oModelData.City, 
+                "Country": oModelData.Country, 
+                "Email": oModelData.Email, 
+                "Telephone": oModelData.Telephone 
+            }).created().then(function () { 
+                MessageToast.show(oResourceBundle.getText("customerCreatedMessage")); 
             });
         },
 
         onCloseDialog: function () {
+                // note: You don't need to chain to the pDialog promise, since this event handler
+                // is only called from within the loaded dialog itself.
             this.byId("dialog").close();
         },
 
-        onCustomerChange: function (oEvent) { 
-            var oBindingContext = oEvent.getParameter("listItem").getBindingContext(); 
-            this.byId("bookingTable").setBindingContext(oBindingContext); 
+        onCustomerChange: function (oEvent) {
+            var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
+            this.byId("bookingTable").setBindingContext(oBindingContext);
         },
 
-        onFilterCustomers: function (oEvent) { 
+        onFilterCustomers: function (oEvent) {
             // build filter array based on the search query
-            var aFilter = []; 
-            var sQuery = oEvent.getParameter("query"); 
-            if (sQuery && sQuery.length > 0) { 
-                aFilter.push(new Filter("CustomerName", FilterOperator.Contains, sQuery)); 
-            } 
+            var aFilter = [];
+            var sQuery = oEvent.getParameter("query");
+            if (sQuery && sQuery.length > 0) {
+                aFilter.push(new Filter("CustomerName", FilterOperator.Contains, sQuery));
+            }
 
             // filter binding
-            var oTable = this.byId("customerTable"); 
-            var oBinding = oTable.getBinding("items"); 
+            var oTable = this.byId("customerTable");
+            var oBinding = oTable.getBinding("items");
             oBinding.filter(aFilter);
         }
     });

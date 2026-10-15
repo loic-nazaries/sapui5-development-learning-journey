@@ -14,6 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.33.0",
       "toolsId": "9207236e-a13d-4ce2-9663-602e13e59443"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
     }
   },
   "sap.ui": {
@@ -54,9 +65,14 @@
           "fallbackLocale": ""
         }
       },
-      "": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "model/data.json"
+        "": {
+          "dataSource": "mainService",
+          "settings": {
+            "synchronizationMode": "None",
+            "autoExpandSelect": true,
+            "groupId": "$direct",
+            "updateGroupId": "$direct"
+          }
       }
     },
     "handleValidation": true,
@@ -74,10 +90,22 @@
         "async": true,
         "viewPath": "sap.training.exc.view",
         "controlAggregation": "pages",
-        "controlId": "<...>"
+        "controlId": "app"
       },
-      "routes": [],
-      "targets": {}
+      "routes": [
+        { 
+          "name": "overview", 
+          "pattern": "", 
+          "target": [ "overview" ]
+        }
+      ],
+      "targets": {
+        "overview": { 
+          "viewId": "overview", 
+          "viewName": "Overview", 
+          "viewLevel": 1
+        }
+      }
     },
     "rootView": {
       "viewName": "sap.training.exc.view.App",

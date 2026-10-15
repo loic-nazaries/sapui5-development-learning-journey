@@ -4,7 +4,12 @@
     xmlns:form="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
-    core:require="{formatter: 'sap/training/exc/model/formatter'}"
+    core:require="{
+        formatter: 'sap/training/exc/model/formatter',
+        Integer: 'sap/ui/model/type/Integer',
+        Date: 'sap/ui/model/type/Date',
+        Currency: 'sap/ui/model/type/Currency'
+    }"
 >
     <Page title="{i18n>overviewPageTitle}">
         <content>
@@ -44,7 +49,7 @@
                             <Input
                                 value="{ 
                                     path: 'customer>/Discount', 
-                                    type: 'sap.ui.model.type.Integer', 
+                                    type: 'Integer', 
                                     constraints: {minimum: 0, maximum: 100} 
                                 }"
                             />
@@ -78,8 +83,7 @@
                 class="sapUiResponsiveMargin"
                 width="auto"
                 items="{ 
-                    path: '/Customers', 
-                    sorter: [ {path: 'City', group: true}, {path: 'CustomerName'} ]
+                    path: '/UX_Customer'
                 }"
             >
                 <headerToolbar> 
@@ -187,7 +191,7 @@
                             <ObjectIdentifier
                                 title="{ 
                                     path: 'FlightDate', 
-                                    type: 'sap.ui.model.type.Date', 
+                                    type: 'Date', 
                                     formatOptions: { 
                                         source: {pattern: 'yyyy-MM-dd'}, 
                                         style: 'medium' 
@@ -203,7 +207,7 @@
                             <ObjectNumber 
                                 number="{ 
                                     parts: [ {path: 'ForeignCurrencyPayment'}, {path: 'ForeignCurrency'} ], 
-                                    type: 'sap.ui.model.type.Currency', 
+                                    type: 'Currency', 
                                     formatOptions: {showMeasure: false} 
                                 }" 
                                 unit="{ForeignCurrency}"
