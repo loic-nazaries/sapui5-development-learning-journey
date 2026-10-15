@@ -90,13 +90,21 @@
         "async": true,
         "viewPath": "sap.training.exc.view",
         "controlAggregation": "pages",
-        "controlId": "app"
+        "controlId": "app",
+        "bypassed": {
+          "target": ["notFound"]
+        }
       },
       "routes": [
         { 
           "name": "overview", 
           "pattern": "", 
           "target": [ "overview" ]
+        },
+        { 
+          "name": "detail", 
+          "pattern": "detail/{customerId}", 
+          "target": [ "detail" ]
         }
       ],
       "targets": {
@@ -104,6 +112,16 @@
           "viewId": "overview", 
           "viewName": "Overview", 
           "viewLevel": 1
+        },
+        "detail": {
+          "viewId": "detail",
+          "viewName": "Detail",
+          "viewLevel": 2
+        },
+        "notFound": {
+          "viewId": "notFound",
+          "viewName": "NotFound",
+          "transition": "show"
         }
       }
     },

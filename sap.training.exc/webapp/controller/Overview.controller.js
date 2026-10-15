@@ -59,6 +59,15 @@ sap.ui.define([
             var oTable = this.byId("customerTable");
             var oBinding = oTable.getBinding("items");
             oBinding.filter(aFilter);
+        },
+
+        onNavToDetails: function (oEvent) { 
+            var oItem = oEvent.getSource(); 
+            var oRouter = this.getOwnerComponent().getRouter(); 
+            
+            oRouter.navTo("detail", { 
+                customerId: oItem.getBindingContext().getPath().substring("/UX_Customer".length) 
+            });
         }
     });
 });
