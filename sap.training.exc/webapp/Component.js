@@ -27,7 +27,8 @@ sap.ui.define([
                     } else { 
                         this._sContentDensityClass = "sapUiSizeCompact"; 
                     }
-                } return this._sContentDensityClass;
+                } 
+                return this._sContentDensityClass;
             }
 
         });
