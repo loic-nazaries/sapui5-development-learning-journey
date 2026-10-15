@@ -38,7 +38,8 @@
       "minUI5Version": "1.153.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.tnt": {}
       }
     },
     "contentDensities": {
@@ -74,17 +75,39 @@
       },
       "routes": [
         {
-          "name": "RouteOverview",
+          "name": "RouteDashboard",
           "pattern": ":?query:",
           "target": [
-            "TargetOverview"
+            "TargetDashboard"
+          ]
+        },
+        {
+          "name": "RouteCustomers",
+          "pattern": "customers",
+          "target": [
+            "TargetCustomers"
+          ]
+        },
+        {
+          "name": "RouteBookings",
+          "pattern": "bookings",
+          "target": [
+            "TargetBookings"
           ]
         }
       ],
       "targets": {
-        "TargetOverview": {
-          "id": "Overview",
-          "name": "Overview"
+        "TargetDashboard": {
+          "id": "Dashboard",
+          "name": "Dashboard"
+        },
+        "TargetCustomers": {
+          "id": "Customers",
+          "name": "Customers"
+        },
+        "TargetBookings": {
+          "id": "Bookings",
+          "name": "Bookings"
         }
       }
     },

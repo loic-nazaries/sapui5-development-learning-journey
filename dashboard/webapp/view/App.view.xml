@@ -1,0 +1,56 @@
+<mvc:View
+    controllerName="dashboard.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader id="toolHeader">
+                <Button
+                    id="menuButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onSideNavButtonPress"
+                />
+
+                <Title id="toolHeaderTitle" text="{i18n>appTitle}" />
+
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:sideContent>
+            <tnt:SideNavigation id="sideNavigation" itemSelect=".onItemSelect">
+                <tnt:NavigationList
+                    id="navigationList"
+                    selectedKey="RouteDashboard"
+                >
+                    <tnt:NavigationListItem
+                        id="navigationListItemDashboard"
+                        key="RouteDashboard"
+                        text="{i18n>dashboardTitle}"
+                        icon="sap-icon://business-objects-experience"
+                    />
+                    <tnt:NavigationListItem
+                        id="navigationListItemCustomers"
+                        key="RouteCustomers"
+                        text="{i18n>customersTitle}"
+                        icon="sap-icon://customer"
+                    />
+                    <tnt:NavigationListItem
+                        id="navigationListItemBookings"
+                        key="RouteBookings"
+                        text="{i18n>bookingsTitle}"
+                        icon="sap-icon://flight"
+                    />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+
+        <tnt:mainContents>
+            <App id="app" />
+        </tnt:mainContents>
+
+    </tnt:ToolPage>
+</mvc:View>

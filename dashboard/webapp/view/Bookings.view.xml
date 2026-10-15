@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName="dashboard.controller.Bookings"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Page
+        id="bookingsTab"
+        title="{i18n>bookingsTitle}"
+    >
+
+    </Page>
+</mvc:View>

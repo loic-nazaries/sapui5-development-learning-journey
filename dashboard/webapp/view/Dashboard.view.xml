@@ -1,0 +1,12 @@
+<mvc:View
+    controllerName="dashboard.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page
+        id="dashboardTab"
+        title="{i18n>dashboardTitle}"
+    >
+
+    </Page>
+</mvc:View>
